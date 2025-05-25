@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday รุกออกสาว ฮานาโกะเคท</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700;900&display=swap');
+        
+        body {
+            font-family: 'Kanit', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .glitter {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            animation: glitter 3s linear infinite;
+        }
+        
+        @keyframes glitter {
+            0% {
+                transform: scale(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                transform: scale(1) rotate(180deg);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(0) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            transform-style: preserve-3d;
+            transition: all 0.5s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px) rotateY(5deg);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: #f00;
+            animation: fall 5s linear infinite;
+        }
+        
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .crown {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 40px;
+            filter: drop-shadow(0 5px 5px rgba(0,0,0,0.2));
+        }
+        
+        .message-box {
+            position: relative;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .message-box:hover {
+            transform: scale(1.02);
+        }
+        
+        .btn-fab {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-fab:hover {
+            transform: scale(1.1) rotate(10deg);
+        }
+        
+        .emoji-rain {
+            position: fixed;
+            font-size: 24px;
+            animation: emoji-fall linear forwards;
+            z-index: 10;
+        }
+        
+        @keyframes emoji-fall {
+            0% {
+                transform: translateY(-20vh) rotate(0deg);
+                opacity: 1;
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(120vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .popup {
+            position: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            border-radius: 50%;
+            z-index: 100;
+            animation: popup-animation 2s forwards;
+            opacity: 0;
+        }
+        
+        @keyframes popup-animation {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            20% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+            80% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(0);
+                opacity: 0;
+            }
+        }
+        
+        .main-button {
+            background: linear-gradient(135deg, #ff41b4 0%, #ff1493 100%);
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            padding: 16px 32px;
+            border-radius: 50px;
+            border: none;
+            box-shadow: 0 10px 20px rgba(255, 20, 147, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .main-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(255, 20, 147, 0.5);
+        }
+        
+        .main-button::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(45deg);
+            transition: all 0.3s ease;
+        }
+        
+        .main-button:hover::after {
+            left: 100%;
+        }
+        
+        .title {
+            font-size: 48px;
+            font-weight: 900;
+            background: linear-gradient(to right, #ff1493, #ff41b4, #ff69b4, #ff8da1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.1);
+            line-height: 1.2;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+        }
+        
+        .subtitle {
+            font-size: 24px;
+            color: #ff1493;
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center p-4">
+    <div id="confetti-container"></div>
+    
+    <div class="card w-full max-w-lg p-8 relative">
+        <div class="crown">👑</div>
+        
+        <div class="text-center mb-8">
+            <h1 class="title">Happy Birthday<br>รุกออกสาว<br>ฮานาโกะเคท</h1>
+            <p class="subtitle">วันนี้วันของแกนะจ๊ะ ปล่อยให้เป็นวันที่เริ่ดที่สุด! 💅✨</p>
+            
+            <button id="mainButton" class="main-button">
+                อีกะหรี่ลองกด 💋
+            </button>
+        </div>
+        
+        <div class="message-box hidden" id="messageBox">
+            <p class="text-xl font-medium mb-3">อายุเท่าไหร่แล้วจ๊ะ? อีกไม่กี่ปีก็เข้าวัยทองแล้วนะคะซิส! 💅✨</p>
+            <p class="mb-3">แต่อย่าเพิ่งตกใจไปนะคะ ยังสวย ยังปัง ยังเริ่ด อยู่เลยค่ะคุณขา~ แก่แต่ตัว แต่หัวใจยังสาว ยังแซ่บ ยังเผ็ด อยู่เสมอ!</p>
+            <p class="mb-3">ขอให้ปีนี้เป็นปีที่ดีที่สุด เงินทองไหลมาเทมา หนุ่มๆ มาตกหลุมรักเพียบ! สวยปังไม่มีตก ผิวพรรณผ่องใส ไร้ริ้วรอย!</p>
+            <p>รักนะคะซิส ขอให้มีความสุขมากๆ เฮลตี้ เวลตี้ นะจ๊ะ! 💖👄💋</p>
+        </div>
+        
+        <div class="flex justify-center mt-6 space-x-4 hidden" id="buttonGroup">
+            <button id="btnConfetti" class="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full font-bold shadow-lg hover:shadow-xl transform transition hover:-translate-y-1">
+                ปล่อยของ! 🎉
+            </button>
+            <button id="btnMessage" class="px-6 py-3 bg-gradient-to-r from-yellow-400 to-orange-500 text-white rounded-full font-bold shadow-lg hover:shadow-xl transform transition hover:-translate-y-1">
+                คำอวยพรเพิ่ม! 💅
+            </button>
+        </div>
+        
+        <div class="btn-fab hidden" id="btnEmoji">
+            💖
+        </div>
+    </div>
+    
+    <script>
+        // สร้างกลิตเตอร์
+        function createGlitter() {
+            const container = document.body;
+            const glitter = document.createElement('div');
+            glitter.className = 'glitter';
+            
+            // สุ่มตำแหน่ง
+            const posX = Math.random() * window.innerWidth;
+            const posY = Math.random() * window.innerHeight;
+            
+            // สุ่มสี
+            const colors = ['#ff9ff3', '#feca57', '#ff6b6b', '#48dbfb', '#1dd1a1', '#00d2d3', '#54a0ff'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            
+            glitter.style.left = posX + 'px';
+            glitter.style.top = posY + 'px';
+            glitter.style.background = color;
+            glitter.style.boxShadow = `0 0 10px ${color}`;
+            
+            // สุ่มขนาด
+            const size = Math.random() * 15 + 5;
+            glitter.style.width = size + 'px';
+            glitter.style.height = size + 'px';
+            
+            // สุ่มความเร็วของแอนิเมชัน
+            const duration = Math.random() * 2 + 1;
+            glitter.style.animation = `glitter ${duration}s linear infinite`;
+            
+            container.appendChild(glitter);
+            
+            // ลบกลิตเตอร์หลังจากแอนิเมชันจบ
+            setTimeout(() => {
+                container.removeChild(glitter);
+            }, duration * 1000);
+        }
+        
+        // สร้างคอนเฟ็ตติ
+        function createConfetti() {
+            const container = document.getElementById('confetti-container');
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            
+            // สุ่มตำแหน่ง
+            const posX = Math.random() * window.innerWidth;
+            
+            // สุ่มสี
+            const colors = ['#ff9ff3', '#feca57', '#ff6b6b', '#48dbfb', '#1dd1a1', '#00d2d3', '#54a0ff'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            
+            // สุ่มรูปร่าง
+            const shapes = ['circle', 'square', 'triangle'];
+            const shape = shapes[Math.floor(Math.random() * shapes.length)];
+            
+            confetti.style.left = posX + 'px';
+            confetti.style.backgroundColor = color;
+            confetti.style.boxShadow = `0 0 10px ${color}`;
+            
+            if (shape === 'circle') {
+                confetti.style.borderRadius = '50%';
+            } else if (shape === 'triangle') {
+                confetti.style.width = '0';
+                confetti.style.height = '0';
+                confetti.style.backgroundColor = 'transparent';
+                confetti.style.borderLeft = '10px solid transparent';
+                confetti.style.borderRight = '10px solid transparent';
+                confetti.style.borderBottom = `20px solid ${color}`;
+            }
+            
+            // สุ่มความเร็วของแอนิเมชัน
+            const duration = Math.random() * 3 + 2;
+            confetti.style.animation = `fall ${duration}s linear infinite`;
+            
+            container.appendChild(confetti);
+            
+            // ลบคอนเฟ็ตติหลังจากแอนิเมชันจบ
+            setTimeout(() => {
+                container.removeChild(confetti);
+            }, duration * 1000);
+        }
+        
+        // สร้าง emoji ตกลงมา
+        function createEmojiRain() {
+            const emojis = ['💖', '✨', '💅', '👑', '💋', '🎁', '🎉', '🌈', '💃', '👄', '💎', '🦄', '🍸', '👠'];
+            const emoji = document.createElement('div');
+            emoji.className = 'emoji-rain';
+            emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            
+            // สุ่มตำแหน่ง
+            const posX = Math.random() * window.innerWidth;
+            emoji.style.left = posX + 'px';
+            
+            // สุ่มความเร็วของแอนิเมชัน
+            const duration = Math.random() * 3 + 2;
+            emoji.style.animation = `emoji-fall ${duration}s linear forwards`;
+            
+            document.body.appendChild(emoji);
+            
+            // ลบ emoji หลังจากแอนิเมชันจบ
+            setTimeout(() => {
+                document.body.removeChild(emoji);
+            }, duration * 1000);
+        }
+        
+        // คำอวยพรเพิ่มเติม
+        const extraMessages = [
+            "ขอให้สวยปังตลอดไป ไม่มีวันร่วง! 💅✨",
+            "ปีนี้ขอให้รวย รวย รวยยย! เงินทองไหลมาเทมา! 💰💎",
+            "ขอให้เจอแต่คนดีๆ หนุ่มๆ หล่อๆ รวยๆ! 👨‍❤️‍👨💕",
+            "ขอให้ผิวสวย หน้าใส ไร้สิว ไร้ริ้วรอย! 👄✨",
+            "ขอให้มีความสุขล้นเหลือ เหมือนกระเป๋าแบรนด์เนมใบใหม่! 👜💖",
+            "ขอให้ชีวิตปังปุริเย่ เหมือนลิปสติกสีแดงสด! 💄👄",
+            "ขอให้สวยแซ่บเวอร์ ทุกองศา ทุกมุมมอง! 📸💃",
+            "ขอให้ชีวิตหวานฉ่ำ เหมือนบับเบิ้ลที! 🧋✨"
+        ];
+        
+        // สร้าง popup "อีตุ้ด"
+        function createPopup(isFirst = false) {
+            const popup = document.createElement('div');
+            popup.className = 'popup';
+            
+            // สุ่มตำแหน่ง
+            const posX = Math.random() * (window.innerWidth - 200) + 100;
+            const posY = Math.random() * (window.innerHeight - 200) + 100;
+            
+            // สุ่มสี
+            const colors = ['#ff1493', '#ff41b4', '#ff69b4', '#ff8da1', '#ff9ff3'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            
+            popup.style.left = posX + 'px';
+            popup.style.top = posY + 'px';
+            popup.style.background = color;
+            
+            // ขนาดและฟอนต์
+            if (isFirst) {
+                popup.style.width = '300px';
+                popup.style.height = '300px';
+                popup.style.fontSize = '72px';
+            } else {
+                // สุ่มขนาด
+                const size = Math.random() * 150 + 50;
+                popup.style.width = size + 'px';
+                popup.style.height = size + 'px';
+                popup.style.fontSize = size / 4 + 'px';
+            }
+            
+            popup.textContent = "อีตุ้ด!";
+            
+            document.body.appendChild(popup);
+            
+            // ลบ popup หลังจากแอนิเมชันจบ
+            setTimeout(() => {
+                document.body.removeChild(popup);
+            }, 2000);
+        }
+        
+        // เริ่มสร้างกลิตเตอร์เมื่อโหลดหน้า
+        setInterval(createGlitter, 300);
+        
+        // ปุ่มหลัก
+        document.getElementById('mainButton').addEventListener('click', function() {
+            // แสดง popup แรกขนาดใหญ่
+            createPopup(true);
+            
+            // แสดง popup อื่นๆ
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    createPopup(false);
+                }, 300 * i + 500);
+            }
+            
+            // แสดงส่วนอื่นๆ
+            setTimeout(() => {
+                document.getElementById('messageBox').classList.remove('hidden');
+                document.getElementById('buttonGroup').classList.remove('hidden');
+                document.getElementById('btnEmoji').classList.remove('hidden');
+                
+                // ปล่อยคอนเฟ็ตติอัตโนมัติ
+                for (let i = 0; i < 30; i++) {
+                    setTimeout(() => {
+                        createConfetti();
+                    }, i * 50);
+                }
+                
+                // ปล่อย emoji อัตโนมัติ
+                for (let i = 0; i < 15; i++) {
+                    setTimeout(() => {
+                        createEmojiRain();
+                    }, i * 100);
+                }
+            }, 2000);
+        });
+        
+        // ปุ่มปล่อยคอนเฟ็ตติ
+        document.getElementById('btnConfetti').addEventListener('click', () => {
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    createConfetti();
+                }, i * 50);
+            }
+            
+            // สร้าง popup เพิ่มเติม
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    createPopup(false);
+                }, i * 300);
+            }
+        });
+        
+        // ปุ่มคำอวยพรเพิ่มเติม
+        document.getElementById('btnMessage').addEventListener('click', () => {
+            const messageBox = document.querySelector('.message-box');
+            const randomMessage = extraMessages[Math.floor(Math.random() * extraMessages.length)];
+            
+            const newMessage = document.createElement('p');
+            newMessage.className = 'mb-3 font-bold text-yellow-100';
+            newMessage.textContent = randomMessage;
+            newMessage.style.transform = 'scale(0)';
+            newMessage.style.transition = 'all 0.3s ease';
+            
+            messageBox.appendChild(newMessage);
+            
+            setTimeout(() => {
+                newMessage.style.transform = 'scale(1)';
+            }, 10);
+            
+            // สร้าง popup เพิ่มเติม
+            createPopup(false);
+            
+            // ลบข้อความหลังจาก 5 วินาที
+            setTimeout(() => {
+                newMessage.style.transform = 'scale(0)';
+                setTimeout(() => {
+                    messageBox.removeChild(newMessage);
+                }, 300);
+            }, 5000);
+        });
+        
+        // ปุ่ม emoji
+        document.getElementById('btnEmoji').addEventListener('click', () => {
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    createEmojiRain();
+                }, i * 100);
+            }
+            
+            // สร้าง popup เพิ่มเติม
+            for (let i = 0; i < 3; i++) {
+                setTimeout(() => {
+                    createPopup(false);
+                }, i * 300);
+            }
+        });
+    </script>
+</body>
+</html>
